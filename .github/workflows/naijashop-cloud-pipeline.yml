@@ -23,7 +23,7 @@ jobs:
         run: 
           python seed_data.py --load-pg --dsn "dbname=${NEON_DB} user=${NEON_USER} password=${NEON_PASSWORD} host=${NEON_HOST} sslmode=require"
 
- trigger_airbyte-syncs: 
+  trigger-airbyte-syncs: 
    runs-on: ubuntu-latest
    needs: refresh-orders  # only runs after orders finish, keep things in order
    steps: 
@@ -34,13 +34,13 @@ jobs:
        env:
          CLIENT_ID: ${{ secrets.AIRBYTE_CLIENT_ID }}
          CLIENT_SECRET: ${{ secrets.AIRBYTE_CLIENT_SECRET }}
-        run: |
-          TOKEN=$(curl -s -X POST "https://api.airbyte.com/v1/applications/token" \
-            -H "Content-Type: application/json" \
-            -d "{\"client_id\": \"${CLIENT_ID}\", \"client_secret\": \"${CLIENT_SECRET}\"}" \
-            | python3 -c "import sys, json; print(json.load(sys.stdin)['access_token'])")
-          echo "::add-mask::$TOKEN"
-          echo "token=$TOKEN" >> "GITHUB_OUTPUT"
+       run: |
+        TOKEN=$(curl -s -X POST "https://api.airbyte.com/v1/applications/token" \
+          -H "Content-Type: application/json" \
+          -d "{\"client_id\": \"${CLIENT_ID}\", \"client_secret\": \"${CLIENT_SECRET}\"}" \
+          | python3 -c "import sys, json; print(json.load(sys.stdin)['access_token'])")
+        echo "::add-mask::$TOKEN"
+        echo "token=$TOKEN" >> "GITHUB_OUTPUT"
 
       - name: Trigger exchange rate sync
         env:
@@ -61,11 +61,3 @@ jobs:
             -H "Authorization: Bearer ${AIRBYTE_TOKEN}" \
             -H "Content-Type: application/json" \
             -d "{\"connectionId\": \"${CONNECTION_ID}\", \"jobType\": \"sync\"}"
-
-
-
-
-
-
-
-            

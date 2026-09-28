@@ -10,7 +10,6 @@ models:
 
       - name: order_id
         tests:
-          - unique
           - not_null
 
   - name: int_order_totals

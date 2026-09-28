@@ -1,0 +1,15 @@
+version: 2
+
+sources:
+  - name: raw                 # first argument in source('raw', ...)
+    description: "Raw NaijaShop data loaded into Neon Postgres"
+    database: neondb          # must match dbname in profiles.yml
+    schema: public            # schema where the raw tables live
+    tables:
+      - name: customers
+      - name: orders
+      - name: order_items
+      - name: products
+      - name: payments
+      - name: Copy_of_marketing_spend
+      - name: exchange_rate_cloud

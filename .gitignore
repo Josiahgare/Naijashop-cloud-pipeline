@@ -1,2 +1,4 @@
 naijashop-ingestion-svc-acct-key.json
-\data
+data/
+logs/
+target/

@@ -52,12 +52,15 @@ jobs:
           EOF
 
       - name: dbt debug
+        working-directory: naijashop_dbt
         run: dbt debug
 
       - name: dbt deps
+        working-directory: naijashop_dbt
         run: dbt deps || true
 
       - name: dbt seed, run, test
+        working-directory: naijashop_dbt
         run: |
           dbt seed
           dbt run

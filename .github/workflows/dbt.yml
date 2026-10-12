@@ -13,12 +13,12 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      DBT_HOST: ${{ secrets.DBT_HOST }}
-      DBT_USER: ${{ secrets.DBT_USER }}
-      DBT_PASSWORD: ${{ secrets.DBT_PASSWORD }}
-      DBT_DATABASE: ${{ secrets.DBT_DATABASE }}
-      DBT_SCHEMA: ${{ secrets.DBT_SCHEMA }}
-      DBT_PORT: ${{ secrets.DBT_PORT }}
+      DBT_HOST: ${{ secrets.NEON_HOST }}
+      DBT_USER: ${{ secrets.NEON_USER }}
+      DBT_PASSWORD: ${{ secrets.NEON_PASSWORD }}
+      DBT_DATABASE: ${{ secrets.NEON_DB }}
+      DBT_SCHEMA: ${{ secrets.NEON_SCHEMA }}
+      DBT_PORT: ${{ secrets.NEON_PORT }}
       DBT_PROFILES_DIR: ${{ github.workspace }}
 
     steps:

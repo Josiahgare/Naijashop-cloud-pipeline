@@ -1,8 +1,6 @@
 name: Naijashop cloud pipeline workflow
 
-on:
-  schedule:
-    - cron: "0 6 * * *" # daily
+on: 
   workflow_dispatch:
 
 jobs:
